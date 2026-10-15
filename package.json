@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently -k \"npm:dev:api\" \"npm:dev:web\"",
-    "dev:api": "node --watch server/index.js",
+    "dev:api": "node server/index.js",
     "dev:web": "vite --host 0.0.0.0",
     "build": "vite build",
     "start": "node server/index.js"
