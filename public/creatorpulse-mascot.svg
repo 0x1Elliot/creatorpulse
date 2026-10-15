@@ -1,23 +1,51 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="78 39 354 354" role="img" aria-labelledby="title desc">
-  <title id="title">CreatorPulse mascot</title>
-  <desc id="desc">A friendly black stick figure holding a small camera.</desc>
-  <g fill="none" stroke="#171717" stroke-width="15" stroke-linecap="round" stroke-linejoin="round">
-    <!-- Simple, hand-drawn stick-figure silhouette -->
-    <circle cx="197" cy="111" r="43" fill="#fff"/>
-    <path d="M197 155v124M197 183l-49 42-3 48M197 183l48 6 29 5M197 279l-53 79M197 279l61 79"/>
-    <path d="M144 358h-24M258 358h24"/>
-    <!-- A small handheld camera, kept secondary to the figure -->
-    <g transform="translate(312 208) scale(.68) translate(-312 -208)">
-    <path d="M268 174h85a12 12 0 0 1 12 12v43a12 12 0 0 1-12 12h-85a12 12 0 0 1-12-12v-43a12 12 0 0 1 12-12Z" fill="#fff"/>
-    <path d="M281 174l12-17h35l13 17"/>
-    <circle cx="367" cy="208" r="23" fill="#fff"/>
-    <circle cx="367" cy="208" r="12"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">CreatorPulse anime creator mascot</title>
+  <desc id="desc">An original anime-inspired creator with windswept spiky hair, a camera and a bright, confident expression.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#dff8f1"/><stop offset="1" stop-color="#b7e9de"/></linearGradient>
+    <linearGradient id="hair" x1=".15" y1="0" x2=".8" y2="1"><stop stop-color="#202d3c"/><stop offset="1" stop-color="#101721"/></linearGradient>
+    <linearGradient id="jacket" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#176f68"/><stop offset="1" stop-color="#134f55"/></linearGradient>
+    <clipPath id="portrait"><circle cx="256" cy="256" r="238"/></clipPath>
+  </defs>
+  <circle cx="256" cy="256" r="247" fill="#172a2d"/>
+  <g clip-path="url(#portrait)">
+    <path fill="url(#bg)" d="M0 0h512v512H0z"/>
+    <circle cx="394" cy="114" r="65" fill="#fff" opacity=".32"/>
+    <path d="M45 420c37-75 95-112 174-115h77c79 4 139 43 177 117v100H45z" fill="#fff" opacity=".34"/>
+    <!-- creator jacket and shoulders -->
+    <path d="M95 524c11-104 49-163 118-184l43 44 44-44c74 21 112 80 119 184z" fill="url(#jacket)" stroke="#112f37" stroke-width="8" stroke-linejoin="round"/>
+    <path d="m207 336 49 49 48-49-13 116-35 30-37-30z" fill="#f5f2e9" stroke="#112f37" stroke-width="7" stroke-linejoin="round"/>
+    <path d="m233 385 23 20 23-20-11 60-12 12-13-12z" fill="#e1a93d"/>
+    <!-- neck -->
+    <path d="M218 287h76v74c-18 24-57 24-76 0z" fill="#e9aa82" stroke="#172330" stroke-width="7"/>
+    <!-- ears -->
+    <path d="M174 196c-24-8-34 8-27 34 5 18 17 27 31 23m164-57c24-8 34 8 27 34-5 18-17 27-31 23" fill="#f1b88f" stroke="#172330" stroke-width="7"/>
+    <!-- face -->
+    <path d="M172 166c0-48 32-81 84-81s84 33 84 81v67c0 59-35 97-84 97s-84-38-84-97z" fill="#f4c29c" stroke="#172330" stroke-width="8"/>
+    <path d="M177 228c17 5 28 1 39-7m119 7c-17 5-28 1-39-7" fill="none" stroke="#d89573" stroke-width="4" opacity=".65"/>
+    <!-- expressive anime eyes -->
+    <path d="M194 204q24-25 50 0l-4 20q-21 19-43 0z" fill="#fff" stroke="#172330" stroke-width="5"/>
+    <path d="M267 204q24-25 50 0l-4 20q-21 19-43 0z" fill="#fff" stroke="#172330" stroke-width="5"/>
+    <ellipse cx="222" cy="215" rx="9" ry="12" fill="#258d82"/><ellipse cx="295" cy="215" rx="9" ry="12" fill="#258d82"/>
+    <circle cx="225" cy="211" r="3.5" fill="#fff"/><circle cx="298" cy="211" r="3.5" fill="#fff"/>
+    <path d="M191 196q26-16 53-2m17 0q27-14 53 2" fill="none" stroke="#172330" stroke-width="7" stroke-linecap="round"/>
+    <path d="M256 216q-7 17-2 22l8 1" fill="none" stroke="#d89573" stroke-width="4" stroke-linecap="round"/>
+    <path d="M237 258q19 16 39 0" fill="none" stroke="#a84c50" stroke-width="5" stroke-linecap="round"/>
+    <path d="M192 245q13 7 25 0m77 0q12 7 25 0" fill="none" stroke="#e8978c" stroke-width="7" stroke-linecap="round" opacity=".65"/>
+    <!-- distinctive original, swept spiky hair -->
+    <path d="M163 198c-15-33-11-76 10-111l-27-39 60 20c12-35 28-52 49-64 8 27 19 42 35 54 17-23 35-37 57-45-5 28-2 48 10 69l48-12-28 43c10 30 8 60-4 88l-21 9-9-56c-13 12-28 18-47 19l6-45c-21 20-39 29-62 33l9-42c-24 27-48 41-72 46l-2 47z" fill="url(#hair)" stroke="#101923" stroke-width="8" stroke-linejoin="round"/>
+    <path d="m157 89 44 28m35-84 5 63m71-54-11 60m74-34-31 44m-115 21q22-17 39-41m27 37q17-11 30-26" fill="none" stroke="#425466" stroke-width="7" stroke-linecap="round" opacity=".85"/>
+    <!-- discreet creator headset mic, kept secondary to the face -->
+    <path d="M164 171c-8-43 12-77 48-91m137 91c5 22 2 39-6 53" fill="none" stroke="#e1b348" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="340" cy="261" r="11" fill="#e1b348" stroke="#172330" stroke-width="5"/>
+    <path d="M340 261q-20 14-40 3" fill="none" stroke="#e1b348" stroke-width="6" stroke-linecap="round"/>
+    <!-- small camera silhouette at shoulder: creator cue without dominating -->
+    <g transform="translate(337 333) rotate(8)">
+      <path d="M7 18h83a10 10 0 0 1 10 10v48a10 10 0 0 1-10 10H7A10 10 0 0 1-3 76V28A10 10 0 0 1 7 18z" fill="#f6f4ec" stroke="#152933" stroke-width="7"/>
+      <path d="m19 18 9-13h30l10 13" fill="#f6f4ec" stroke="#152933" stroke-width="7" stroke-linejoin="round"/>
+      <circle cx="60" cy="52" r="20" fill="#d8f4ec" stroke="#152933" stroke-width="7"/><circle cx="60" cy="52" r="9" fill="#258d82"/>
+      <circle cx="16" cy="33" r="3" fill="#e1b348"/>
     </g>
+    <path d="M393 425v62m-17 0h34" stroke="#152933" stroke-width="7" stroke-linecap="round"/>
   </g>
-  <!-- A small smile keeps the mascot warm without adding extra detail. -->
-  <g fill="#171717">
-    <circle cx="183" cy="107" r="4.5"/>
-    <circle cx="211" cy="107" r="4.5"/>
-  </g>
-  <path d="M184 126q13 13 26 0" fill="none" stroke="#171717" stroke-width="5" stroke-linecap="round"/>
 </svg>
