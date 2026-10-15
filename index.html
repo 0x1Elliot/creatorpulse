@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CreatorPulse – Live Creator Dashboard (Demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">CreatorPulse <span class="demo">Demo data</span></div>
+  <div class="live"><i class="dot"></i><b id="liveNow">0</b> watching now</div>
+</header>
+
+<main>
+  <section class="hero" aria-label="Today">
+    <div><span class="lbl">Earned this month</span><div class="big" id="kEarn">$0</div><small id="kEarnSub"></small></div>
+    <div class="kpis">
+      <div><span class="lbl">Views (30d)</span><b id="kViews"></b><small id="kViewsD"></small></div>
+      <div><span class="lbl">Followers</span><b id="kFol"></b><small id="kFolD"></small></div>
+      <div><span class="lbl">Ad ROAS</span><b id="kRoas"></b><small>blended</small></div>
+      <div><span class="lbl">Shop sales</span><b id="kShop"></b><small id="kShopD"></small></div>
+    </div>
+  </section>
+
+  <div class="grid">
+    <div class="col">
+      <section>
+        <div class="row"><h2>Views</h2>
+          <div class="seg" id="range"><button data-r="7">7d</button><button data-r="30" class="on">30d</button><button data-r="90">90d</button></div></div>
+        <div class="chart"><svg id="line" viewBox="0 0 600 200" preserveAspectRatio="none" role="img" aria-label="Views over time"></svg><div class="tip" id="tip"></div></div>
+      </section>
+
+      <section><h2>Follower base</h2><div id="plat"></div></section>
+
+      <section><h2>Brand deals &amp; sponsorships <small id="pipe"></small></h2>
+        <div class="scroll"><table><thead><tr><th>Brand</th><th>Type</th><th class="r">Value</th><th>Stage</th></tr></thead><tbody id="deals"></tbody></table></div></section>
+
+      <section><h2>Paid marketing</h2>
+        <div class="scroll"><table><thead><tr><th>Channel</th><th class="r">Spend</th><th class="r">Revenue</th><th class="r">ROAS</th><th>Return</th></tr></thead><tbody id="ads"></tbody></table></div></section>
+
+      <section><h2>Merch &amp; products</h2><div id="shop"></div></section>
+    </div>
+
+    <aside class="rail" aria-label="AI agent">
+      <h2>Content agent <span class="state" id="agState">idle</span></h2>
+      <p class="hint">Tell it what to do. It uploads, edits, schedules, organizes and shares across your channels.</p>
+      <div class="quick" id="quick">
+        <button data-q="Upload">Upload</button><button data-q="Edit">Edit</button><button data-q="Schedule">Schedule</button><button data-q="Organize">Organize</button><button data-q="Share">Share</button>
+      </div>
+      <div class="cmd"><input id="cmd" placeholder="e.g. Cut 3 Shorts from Sunday's vlog and schedule them" aria-label="Command for agent"><button id="go">Run</button></div>
+      <ul id="queue"></ul>
+      <h3>Activity</h3><ul id="log" class="log"></ul>
+      <div class="soon"><span>Coming next</span> Auto-captions · Thumbnail A/B tests · Comment replies · Deal outreach</div>
+    </aside>
+  </div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
