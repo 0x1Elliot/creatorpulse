@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CreatorPulse – Live Creator Dashboard (Demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef1f6;--ink:#101828;--mut:#5d6778;--line:#d9dfe9;--panel:#fff;--acc:#2f5bff;--good:#0f9d63;--bad:#d6404a;--warn:#c98a0a;
+ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c111b;--ink:#e8ecf4;--mut:#8f9bb0;--line:#243047;--panel:#131b29;--acc:#6f8cff;--good:#38c88a;--bad:#ff6b73;--warn:#e8b13c;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0c111b;--ink:#e8ecf4;--mut:#8f9bb0;--line:#243047;--panel:#131b29;--acc:#6f8cff;--good:#38c88a;--bad:#ff6b73;--warn:#e8b13c;color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.45 "DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+h2,h3,.big,.kpis b,.brand{font-family:"Bricolage Grotesque","DM Sans",system-ui,sans-serif}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5}
+.brand{font-weight:700;font-size:18px}
+.demo{font:500 11px "DM Sans",sans-serif;color:var(--mut);border:1px solid var(--line);border-radius:99px;padding:2px 8px;margin-left:6px}
+.live{font-size:13px;color:var(--mut);white-space:nowrap}.live b{color:var(--ink)}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--bad);margin-right:6px;animation:p 1.6s infinite}
+@keyframes p{50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}}
+main{max-width:1180px;margin:0 auto;padding:18px}
+.lbl{display:block;font-size:12px;color:var(--mut)}
+.hero{display:grid;grid-template-columns:1fr;gap:18px;padding:8px 0 22px;border-bottom:1px solid var(--line)}
+.big{font-size:clamp(44px,9vw,76px);line-height:1;font-weight:700;letter-spacing:-.03em;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.kpis b{display:block;font-size:24px;font-weight:700}
+small{color:var(--mut);font-size:12px}.up{color:var(--good)}.dn{color:var(--bad)}
+.grid{display:grid;grid-template-columns:1fr;gap:28px;margin-top:22px}
+section{padding-bottom:26px;margin-bottom:26px;border-bottom:1px solid var(--line)}
+.col section:last-child{border:0}
+h2{font-size:19px;margin:0 0 12px;font-weight:700;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+h2 small{font-family:"DM Sans",sans-serif;font-weight:400}
+h3{font-size:15px;margin:18px 0 8px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.row h2{margin:0 0 12px}
+.seg{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-bottom:12px}
+.seg button{border:0;background:transparent;color:var(--mut);padding:6px 12px;font:inherit;font-size:13px;cursor:pointer}
+.seg .on{background:var(--ink);color:var(--bg)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.chart{position:relative}
+#line{width:100%;height:210px;display:block;touch-action:none}
+.tip{position:absolute;top:0;left:0;background:var(--ink);color:var(--bg);font-size:12px;padding:4px 8px;border-radius:6px;pointer-events:none;opacity:0;white-space:nowrap}
+.pl{display:grid;grid-template-columns:92px 1fr 88px;gap:10px;align-items:center;padding:7px 0;font-size:14px}
+.bar{height:10px;border-radius:5px;background:var(--line);overflow:hidden}.bar i{display:block;height:100%;border-radius:5px}
+.pl .v{text-align:right}.pl .v small{display:block}
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:420px}
+th{font-weight:500;color:var(--mut);text-align:left;font-size:12px;padding:0 8px 8px 0}
+td{padding:9px 8px 9px 0;border-top:1px solid var(--line)}
+.r{text-align:right}
+.chip{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12px;font-weight:500;border:1px solid currentColor}
+.s-Paid{color:var(--good)}.s-Signed{color:var(--acc)}.s-Negotiating{color:var(--warn)}.s-Pitched{color:var(--mut)}
+.mini{display:inline-block;width:80px;height:8px;background:var(--line);border-radius:4px;vertical-align:middle;overflow:hidden}.mini i{display:block;height:100%;background:var(--good)}
+.prod{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.prod:first-child{border-top:0}.prod b{display:block}
+.rail{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px;align-self:start}
+.state{font:500 12px "DM Sans",sans-serif;color:var(--mut);border:1px solid var(--line);border-radius:99px;padding:2px 9px}
+.state.work{color:var(--acc);border-color:var(--acc)}
+.hint{margin:0 0 12px;color:var(--mut);font-size:13px}
+.quick{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.quick button{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:99px;padding:6px 12px;font:inherit;font-size:13px;cursor:pointer}
+.quick button:hover{border-color:var(--acc)}
+.cmd{display:flex;gap:6px}
+.cmd input{flex:1;min-width:0;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:10px;font:inherit;font-size:14px}
+.cmd button{border:0;background:var(--acc);color:#fff;border-radius:10px;padding:0 16px;font:inherit;font-weight:500;cursor:pointer}
+ul{list-style:none;margin:12px 0 0;padding:0}
+#queue li{padding:10px 0;border-top:1px solid var(--line);font-size:14px}
+#queue .meta{display:flex;justify-content:space-between;gap:8px;color:var(--mut);font-size:12px;margin-top:2px}
+#queue .pb{height:4px;background:var(--line);border-radius:2px;margin-top:6px;overflow:hidden}#queue .pb i{display:block;height:100%;background:var(--acc);transition:width .4s}
+.log{font-size:12px;color:var(--mut);max-height:120px;overflow:auto;margin-top:0}.log li{padding:3px 0}
+.soon{margin-top:16px;font-size:12px;color:var(--mut);border-top:1px solid var(--line);padding-top:12px}.soon span{color:var(--ink);font-weight:500;margin-right:4px}
+@media (min-width:900px){.hero{grid-template-columns:1.1fr 1.4fr;align-items:end}.kpis{grid-template-columns:repeat(4,1fr)}.grid{grid-template-columns:1fr 360px}.rail{position:sticky;top:76px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand">CreatorPulse <span class="demo">Demo data</span></div>
+  <div class="live"><i class="dot"></i><b id="liveNow">0</b> watching now</div>
+</header>
+
+<main>
+  <section class="hero" aria-label="Today">
+    <div><span class="lbl">Earned this month</span><div class="big" id="kEarn">$0</div><small id="kEarnSub"></small></div>
+    <div class="kpis">
+      <div><span class="lbl">Views (30d)</span><b id="kViews"></b><small id="kViewsD"></small></div>
+      <div><span class="lbl">Followers</span><b id="kFol"></b><small id="kFolD"></small></div>
+      <div><span class="lbl">Ad ROAS</span><b id="kRoas"></b><small>blended</small></div>
+      <div><span class="lbl">Shop sales</span><b id="kShop"></b><small id="kShopD"></small></div>
+    </div>
+  </section>
+
+  <div class="grid">
+    <div class="col">
+      <section>
+        <div class="row"><h2>Views</h2>
+          <div class="seg" id="range"><button data-r="7">7d</button><button data-r="30" class="on">30d</button><button data-r="90">90d</button></div></div>
+        <div class="chart"><svg id="line" viewBox="0 0 600 200" preserveAspectRatio="none" role="img" aria-label="Views over time"></svg><div class="tip" id="tip"></div></div>
+      </section>
+
+      <section><h2>Follower base</h2><div id="plat"></div></section>
+
+      <section><h2>Brand deals &amp; sponsorships <small id="pipe"></small></h2>
+        <div class="scroll"><table><thead><tr><th>Brand</th><th>Type</th><th class="r">Value</th><th>Stage</th></tr></thead><tbody id="deals"></tbody></table></div></section>
+
+      <section><h2>Paid marketing</h2>
+        <div class="scroll"><table><thead><tr><th>Channel</th><th class="r">Spend</th><th class="r">Revenue</th><th class="r">ROAS</th><th>Return</th></tr></thead><tbody id="ads"></tbody></table></div></section>
+
+      <section><h2>Merch &amp; products</h2><div id="shop"></div></section>
+    </div>
+
+    <aside class="rail" aria-label="AI agent">
+      <h2>Content agent <span class="state" id="agState">idle</span></h2>
+      <p class="hint">Tell it what to do. It uploads, edits, schedules, organizes and shares across your channels.</p>
+      <div class="quick" id="quick">
+        <button data-q="Upload">Upload</button><button data-q="Edit">Edit</button><button data-q="Schedule">Schedule</button><button data-q="Organize">Organize</button><button data-q="Share">Share</button>
+      </div>
+      <div class="cmd"><input id="cmd" placeholder="e.g. Cut 3 Shorts from Sunday's vlog and schedule them" aria-label="Command for agent"><button id="go">Run</button></div>
+      <ul id="queue"></ul>
+      <h3>Activity</h3><ul id="log" class="log"></ul>
+      <div class="soon"><span>Coming next</span> Auto-captions · Thumbnail A/B tests · Comment replies · Deal outreach</div>
+    </aside>
+  </div>
+</main>
+<script>
+const $=s=>document.querySelector(s);
+const fmt=n=>n>=1e6?(n/1e6).toFixed(2)+'M':n>=1e3?(n/1e3).toFixed(1)+'K':String(Math.round(n));
+const money=n=>'$'+Math.round(n).toLocaleString();
+let seed=11;const rnd=()=>(seed=seed*16807%2147483647)/2147483647;
+
+// ---- Demo data (swap for real API calls: YouTube, TikTok, Meta, Stripe, Shopify) ----
+const views=Array.from({length:90},(_,i)=>Math.round((150e3+i*1800)*(1+.18*Math.sin(i*2*Math.PI/7))*(.85+rnd()*.3)+(rnd()>.93?220e3:0)));
+const S={live:3120,followers:[
+ {n:'YouTube',f:1240000,d:.9,c:'#e5484d'},{n:'TikTok',f:482000,d:2.4,c:'#16b5a8'},
+ {n:'Instagram',f:356000,d:1.3,c:'#c13fb8'},{n:'X',f:98000,d:.2,c:'#6b7a90'}],
+ deals:[{b:'Nova Energy',t:'Sponsorship',v:12000,s:'Paid'},{b:'Kite Mobile',t:'Brand deal',v:8500,s:'Signed'},
+ {b:'Oakline Desks',t:'Affiliate',v:3200,s:'Paid'},{b:'Pixel & Pine',t:'Sponsorship',v:15000,s:'Negotiating'},{b:'Lumen Audio',t:'Brand deal',v:6000,s:'Pitched'}],
+ ads:[{n:'TikTok Ads',sp:4210,rv:11800},{n:'Facebook Ads',sp:3120,rv:7400},{n:'Instagram Ads',sp:2480,rv:6900}],
+ shop:[{n:'Studio Hoodie',u:212,p:58},{n:'Sticker Pack',u:640,p:9},{n:'Editing Presets',u:388,p:24},{n:'Creator Playbook (ebook)',u:154,p:39}],
+ adsense:18400};
+const paidDeals=()=>S.deals.filter(d=>d.s==='Paid').reduce((a,d)=>a+d.v,0);
+const shopTotal=()=>S.shop.reduce((a,p)=>a+p.u*p.p,0);
+const earn=()=>S.adsense+paidDeals()+shopTotal();
+const totF=()=>S.followers.reduce((a,p)=>a+p.f,0);
+
+// ---- Line chart ----
+let R=30;
+function drawLine(){
+  const d=views.slice(-R),W=600,H=200,p=14,mx=Math.max(...d),mn=Math.min(...d);
+  const X=i=>p+i*(W-2*p)/(d.length-1),Y=v=>H-p-(v-mn)/(mx-mn||1)*(H-2*p);
+  const pts=d.map((v,i)=>X(i).toFixed(1)+','+Y(v).toFixed(1));
+  $('#line').innerHTML=`<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--acc)" stop-opacity=".28"/><stop offset="1" stop-color="var(--acc)" stop-opacity="0"/></linearGradient></defs>
+  <polygon points="${X(0)},${H} ${pts.join(' ')} ${X(d.length-1)},${H}" fill="url(#g)"/>
+  <polyline points="${pts.join(' ')}" fill="none" stroke="var(--acc)" stroke-width="2.5" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>`;
+  const sum=d.reduce((a,b)=>a+b,0),prev=views.slice(-2*R,-R).reduce((a,b)=>a+b,0);
+  if(R===30){$('#kViews').textContent=fmt(sum);const c=(sum/prev-1)*100;$('#kViewsD').innerHTML=`<span class="${c>=0?'up':'dn'}">${c>=0?'▲':'▼'} ${Math.abs(c).toFixed(1)}%</span> vs prior 30d`}
+  const svg=$('#line'),tip=$('#tip');
+  svg.onpointermove=e=>{const r=svg.getBoundingClientRect(),i=Math.max(0,Math.min(d.length-1,Math.round((e.clientX-r.left)/r.width*(d.length-1))));
+    tip.style.opacity=1;tip.textContent=`${d.length-1-i}d ago · ${fmt(d[i])} views`;tip.style.left=Math.min(r.width-130,Math.max(0,e.clientX-r.left-50))+'px';tip.style.top='4px'};
+  svg.onpointerleave=()=>tip.style.opacity=0;
+}
+document.querySelectorAll('#range button').forEach(b=>b.onclick=()=>{R=+b.dataset.r;document.querySelectorAll('#range button').forEach(x=>x.classList.toggle('on',x===b));drawLine()});
+
+// ---- Render sections ----
+function renderStatic(){
+  const mx=Math.max(...S.followers.map(p=>p.f));
+  $('#plat').innerHTML=S.followers.map(p=>`<div class="pl"><span>${p.n}</span><div class="bar"><i style="width:${p.f/mx*100}%;background:${p.c}"></i></div><div class="v"><b>${fmt(p.f)}</b><small class="up">+${p.d}%</small></div></div>`).join('');
+  $('#deals').innerHTML=S.deals.map(d=>`<tr><td>${d.b}</td><td>${d.t}</td><td class="r">${money(d.v)}</td><td><span class="chip s-${d.s}">${d.s}</span></td></tr>`).join('');
+  $('#pipe').textContent=`${money(S.deals.filter(d=>d.s!=='Paid').reduce((a,d)=>a+d.v,0))} in pipeline`;
+  const roas=S.ads.map(a=>a.rv/a.sp),best=Math.max(...roas);
+  $('#ads').innerHTML=S.ads.map((a,i)=>`<tr><td>${a.n}</td><td class="r">${money(a.sp)}</td><td class="r">${money(a.rv)}</td><td class="r">${roas[i].toFixed(1)}x</td><td><span class="mini"><i style="width:${roas[i]/best*100}%"></i></span></td></tr>`).join('');
+  const sp=S.ads.reduce((a,x)=>a+x.sp,0),rv=S.ads.reduce((a,x)=>a+x.rv,0);$('#kRoas').textContent=(rv/sp).toFixed(1)+'x';
+}
+function renderLive(){
+  $('#liveNow').textContent=Math.round(S.live).toLocaleString();
+  $('#kEarn').textContent=money(earn());
+  $('#kEarnSub').textContent=`Ads ${money(S.adsense)} · Deals ${money(paidDeals())} · Shop ${money(shopTotal())}`;
+  $('#kFol').textContent=fmt(totF());$('#kFolD').innerHTML='<span class="up">▲ 1.4%</span> this month';
+  $('#kShop').textContent=money(shopTotal());$('#kShopD').textContent=S.shop.reduce((a,p)=>a+p.u,0)+' orders';
+  $('#shop').innerHTML=S.shop.map(p=>`<div class="prod"><div><b>${p.n}</b><small>${p.u} sold · ${money(p.p)} each</small></div><b>${money(p.u*p.p)}</b></div>`).join('');
+}
+setInterval(()=>{ // simulated live feed
+  S.live=Math.max(900,S.live+(rnd()-.45)*90);
+  if(rnd()<.6)S.followers[Math.floor(rnd()*4)].f+=Math.floor(rnd()*14)+1;
+  if(rnd()<.18){const p=S.shop[Math.floor(rnd()*4)];p.u++;log(`New order: ${p.n}`)}
+  if(rnd()<.3)S.adsense+=Math.round(rnd()*25);
+  renderLive();
+},1800);
+
+// ---- AI agent (simulated) ----
+const STEPS={Upload:['Uploading','Processing'],Edit:['Trimming','Captioning','Rendering'],Schedule:['Finding best time','Scheduling'],Organize:['Tagging','Filing'],Share:['Cross-posting','Posting']};
+const queue=[
+ {t:'Cut 3 Shorts from "Sunday vlog"',k:'Edit',p:62,step:'Captioning'},
+ {t:'Schedule "Desk setup 2026" to YouTube + IG',k:'Schedule',p:100,step:'Scheduled · Fri 6:00 PM'},
+ {t:'Organize March footage by series',k:'Organize',p:100,step:'Done'}];
+function renderQueue(){
+  $('#queue').innerHTML=queue.slice().reverse().map(q=>`<li><div>${q.t}</div><div class="pb"><i style="width:${q.p}%"></i></div><div class="meta"><span>${q.step}</span><span>${q.p}%</span></div></li>`).join('');
+  $('#agState').textContent=queue.some(q=>q.p<100)?'working':'idle';$('#agState').classList.toggle('work',queue.some(q=>q.p<100));
+}
+function log(m){const li=document.createElement('li');li.textContent=new Date().toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})+'  '+m;$('#log').prepend(li);while($('#log').children.length>20)$('#log').lastChild.remove()}
+function run(text){
+  text=text.trim();if(!text)return;
+  const k=Object.keys(STEPS).find(k=>text.toLowerCase().includes(k.toLowerCase()))||(/cut|trim|clip|caption/i.test(text)?'Edit':/post|publish|cross/i.test(text)?'Share':'Organize');
+  const q={t:text,k,p:0,step:STEPS[k][0],i:0};queue.push(q);log(`Started: ${text}`);renderQueue();
+  const iv=setInterval(()=>{q.p=Math.min(100,q.p+Math.round(8+rnd()*14));q.i=Math.min(STEPS[k].length-1,Math.floor(q.p/100*STEPS[k].length));q.step=STEPS[k][q.i];
+    if(q.p>=100){clearInterval(iv);q.step='Done';log(`Finished: ${text}`)}renderQueue()},700);
+}
+$('#go').onclick=()=>{run($('#cmd').value);$('#cmd').value=''};
+$('#cmd').onkeydown=e=>{if(e.key==='Enter')$('#go').click()};
+document.querySelectorAll('#quick button').forEach(b=>b.onclick=()=>{const d={Upload:'Upload latest raw footage to YouTube',Edit:'Edit highlight reel from last stream',Schedule:'Schedule this week\'s posts at peak times',Organize:'Organize asset library by campaign',Share:'Share newest video to TikTok, IG and X'};run(d[b.dataset.q])});
+
+renderStatic();renderLive();drawLine();renderQueue();
+log('Connected: YouTube, TikTok, Instagram, X, Shopify (demo)');
+</script>
+</body>
+</html>
