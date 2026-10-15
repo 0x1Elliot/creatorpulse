@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="78 39 354 354" role="img" aria-labelledby="title desc">
+  <title id="title">CreatorPulse mascot</title>
+  <desc id="desc">A friendly black stick figure holding a small camera.</desc>
+  <g fill="none" stroke="#171717" stroke-width="15" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Simple, hand-drawn stick-figure silhouette -->
+    <circle cx="197" cy="111" r="43" fill="#fff"/>
+    <path d="M197 155v124M197 183l-49 42-3 48M197 183l48 6 29 5M197 279l-53 79M197 279l61 79"/>
+    <path d="M144 358h-24M258 358h24"/>
+    <!-- A small handheld camera, kept secondary to the figure -->
+    <g transform="translate(312 208) scale(.68) translate(-312 -208)">
+    <path d="M268 174h85a12 12 0 0 1 12 12v43a12 12 0 0 1-12 12h-85a12 12 0 0 1-12-12v-43a12 12 0 0 1 12-12Z" fill="#fff"/>
+    <path d="M281 174l12-17h35l13 17"/>
+    <circle cx="367" cy="208" r="23" fill="#fff"/>
+    <circle cx="367" cy="208" r="12"/>
+    </g>
+  </g>
+  <!-- A small smile keeps the mascot warm without adding extra detail. -->
+  <g fill="#171717">
+    <circle cx="183" cy="107" r="4.5"/>
+    <circle cx="211" cy="107" r="4.5"/>
+  </g>
+  <path d="M184 126q13 13 26 0" fill="none" stroke="#171717" stroke-width="5" stroke-linecap="round"/>
+</svg>

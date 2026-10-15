@@ -30,6 +30,7 @@ The production server serves the built frontend, API, and original demo from one
 - Profile and task CRUD endpoints with basic input validation and ownership checks.
 - A free local planning helper that turns lines, semicolon-separated items, and “and then” steps into reviewable Attend task suggestions. It has no API key or paid AI service configured and does not perform actions on creator platforms.
 - Responsive React frontend with profile, daily plan, and overview screens.
+- CreatorPulse stick-figure camera mascot in SVG form for the app and 1024×1024 PNG form for social profiles.
 - The original static analytics and simulated content agent demo is copied into `public/demo/`; its mock dashboard data remains independent of signed-in app records.
 
 ## API
